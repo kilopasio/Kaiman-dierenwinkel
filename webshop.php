@@ -4,24 +4,29 @@ include 'products.php';
 
 // --- FILTER LOGICA ---
 
-// 1. Haal de maximumprijs op (standaard 300)
+// 1. Ophalen van filters uit de URL (als ze er zijn)
 $selected_price = isset($_GET['max_price']) ? $_GET['max_price'] : 300;
-
-// 2. Haal de categorie op (standaard 'all' oftewel alles)
 $selected_category = isset($_GET['category']) ? $_GET['category'] : 'all';
+$search_query = isset($_GET['search']) ? trim($_GET['search']) : ''; // De zoekopdracht
 
-// 3. De filter lus
+// 2. De grote filter lus
 $filtered_products = [];
 
 foreach ($products as $id => $product) {
-    // Check 1: Is de prijs goed?
+    
+    // Check Prijs
     $match_price = ($product['price'] <= $selected_price);
 
-    // Check 2: Is de categorie goed? (Of staat hij op 'all'?)
+    // Check Categorie
     $match_category = ($selected_category == 'all' || $product['category'] == $selected_category);
 
-    // Als BEIDE waar zijn, voegen we hem toe aan de lijst
-    if ($match_price && $match_category) {
+    // Check Zoekopdracht (NIEUW)
+    // Als zoekopdracht leeg is, is het altijd goed. 
+    // Anders kijken we of de naam de zoekterm bevat (stripos is hoofdletterongevoelig)
+    $match_search = ($search_query == '' || stripos($product['name'], $search_query) !== false);
+
+    // Als ALLES waar is, mag hij in de lijst
+    if ($match_price && $match_category && $match_search) {
         $filtered_products[$id] = $product;
     }
 }
@@ -87,16 +92,30 @@ if (isset($_POST['add_to_cart'])) {
             <aside class="shop-sidebar">
                 
                 <div class="sidebar-block">
+                    <h3>Zoeken</h3>
+                    <form method="GET" action="webshop.php">
+                        <input type="hidden" name="category" value="<?php echo $selected_category; ?>">
+                        <input type="hidden" name="max_price" value="<?php echo $selected_price; ?>">
+                        
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <input type="text" name="search" placeholder="Zoek product..." value="<?php echo htmlspecialchars($search_query); ?>" 
+                                   style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #444; background: #0f1115; color: white;">
+                        </div>
+                        <button type="submit" class="btn-filter" style="margin-top: 0;">Zoek</button>
+                    </form>
+                </div>
+
+                <div class="sidebar-block">
                     <h3>Categorieën</h3>
                     <ul>
-                        <li><a href="webshop.php?category=all" class="<?php echo ($selected_category == 'all') ? 'active-cat' : ''; ?>">Alles tonen</a></li>
-                        <li><a href="webshop.php?category=Verlichting" class="<?php echo ($selected_category == 'Verlichting') ? 'active-cat' : ''; ?>">Verlichting</a></li>
-                        <li><a href="webshop.php?category=Verwarming" class="<?php echo ($selected_category == 'Verwarming') ? 'active-cat' : ''; ?>">Verwarming</a></li>
-                        <li><a href="webshop.php?category=Voeding" class="<?php echo ($selected_category == 'Voeding') ? 'active-cat' : ''; ?>">Voeding</a></li>
-                        <li><a href="webshop.php?category=Techniek" class="<?php echo ($selected_category == 'Techniek') ? 'active-cat' : ''; ?>">Techniek</a></li>
-                        <li><a href="webshop.php?category=Terrariumbouw" class="<?php echo ($selected_category == 'Terrariumbouw') ? 'active-cat' : ''; ?>">Terrariumbouw</a></li>
-                        <li><a href="webshop.php?category=Decoratie" class="<?php echo ($selected_category == 'Decoratie') ? 'active-cat' : ''; ?>">Decoratie</a></li>
-                        <li><a href="webshop.php?category=Accessoires" class="<?php echo ($selected_category == 'Accessoires') ? 'active-cat' : ''; ?>">Accessoires</a></li>
+                        <li><a href="webshop.php?category=all&search=<?php echo $search_query; ?>" class="<?php echo ($selected_category == 'all') ? 'active-cat' : ''; ?>">Alles tonen</a></li>
+                        <li><a href="webshop.php?category=Verlichting&search=<?php echo $search_query; ?>" class="<?php echo ($selected_category == 'Verlichting') ? 'active-cat' : ''; ?>">Verlichting</a></li>
+                        <li><a href="webshop.php?category=Verwarming&search=<?php echo $search_query; ?>" class="<?php echo ($selected_category == 'Verwarming') ? 'active-cat' : ''; ?>">Verwarming</a></li>
+                        <li><a href="webshop.php?category=Voeding&search=<?php echo $search_query; ?>" class="<?php echo ($selected_category == 'Voeding') ? 'active-cat' : ''; ?>">Voeding</a></li>
+                        <li><a href="webshop.php?category=Techniek&search=<?php echo $search_query; ?>" class="<?php echo ($selected_category == 'Techniek') ? 'active-cat' : ''; ?>">Techniek</a></li>
+                        <li><a href="webshop.php?category=Terrariumbouw&search=<?php echo $search_query; ?>" class="<?php echo ($selected_category == 'Terrariumbouw') ? 'active-cat' : ''; ?>">Terrariumbouw</a></li>
+                        <li><a href="webshop.php?category=Decoratie&search=<?php echo $search_query; ?>" class="<?php echo ($selected_category == 'Decoratie') ? 'active-cat' : ''; ?>">Decoratie</a></li>
+                        <li><a href="webshop.php?category=Accessoires&search=<?php echo $search_query; ?>" class="<?php echo ($selected_category == 'Accessoires') ? 'active-cat' : ''; ?>">Accessoires</a></li>
                     </ul>
                 </div>
 
@@ -104,6 +123,7 @@ if (isset($_POST['add_to_cart'])) {
                     <h3>Filteren op Prijs</h3>
                     <form method="GET" action="webshop.php">
                         <input type="hidden" name="category" value="<?php echo $selected_category; ?>">
+                        <input type="hidden" name="search" value="<?php echo $search_query; ?>">
                         
                         <p>Max prijs: € <span id="price-display"><?php echo $selected_price; ?></span></p>
                         
@@ -120,7 +140,7 @@ if (isset($_POST['add_to_cart'])) {
                 <?php if (empty($filtered_products)): ?>
                     <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
                         <h3>Geen producten gevonden...</h3>
-                        <p>Er zijn geen producten in de categorie "<strong><?php echo $selected_category; ?></strong>" onder de €<?php echo $selected_price; ?>.</p>
+                        <p>Geen resultaten voor "<strong><?php echo htmlspecialchars($search_query); ?></strong>" binnen deze filters.</p>
                         <br>
                         <a href="webshop.php" class="btn-main">Reset Filters</a>
                     </div>
@@ -128,18 +148,22 @@ if (isset($_POST['add_to_cart'])) {
                     <?php foreach ($filtered_products as $id => $product): ?>
                         <div class="product-card">
                             <div class="product-img">
-                                <img src="<?php echo $product['img']; ?>" alt="<?php echo $product['name']; ?>">
-                                <?php if($product['price'] > 100): ?>
-                                    <span class="sale-badge">Premium</span>
-                                <?php endif; ?>
+                                <a href="product_detail.php?id=<?php echo $id; ?>">
+                                    <img src="<?php echo $product['img']; ?>" alt="<?php echo $product['name']; ?>">
+                                    <?php if($product['price'] > 100): ?>
+                                        <span class="sale-badge">Premium</span>
+                                    <?php endif; ?>
+                                </a>
                             </div>
                             <div class="product-info">
-                                <h4><?php echo $product['name']; ?></h4>
+                                <a href="product_detail.php?id=<?php echo $id; ?>">
+                                    <h4><?php echo $product['name']; ?></h4>
+                                </a>
                                 <p class="category"><?php echo $product['category']; ?></p>
                                 <div class="price-row">
                                     <span class="price">€ <?php echo number_format($product['price'], 2, ',', '.'); ?></span>
                                     
-                                    <form method="post" action="webshop.php?category=<?php echo $selected_category; ?>&max_price=<?php echo $selected_price; ?>">
+                                    <form method="post" action="webshop.php?category=<?php echo $selected_category; ?>&max_price=<?php echo $selected_price; ?>&search=<?php echo $search_query; ?>">
                                         <input type="hidden" name="product_id" value="<?php echo $id; ?>">
                                         <button type="submit" name="add_to_cart" class="btn-add">+</button>
                                     </form>

@@ -752,8 +752,85 @@ footer {
 }
 
 /* =========================================
-   12. MOBIELE AANPASSINGEN
+   12. NIEUWE STIJL VOOR PRODUCT DETAIL
    ========================================= */
+.breadcrumbs {
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.breadcrumbs a:hover {
+    color: var(--green-accent);
+    text-decoration: underline;
+}
+
+.detail-container {
+    display: flex;
+    gap: 3rem;
+    background: var(--dark-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+}
+
+.detail-image {
+    flex: 1;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.detail-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.detail-info {
+    flex: 1;
+}
+
+.detail-category {
+    text-transform: uppercase;
+    color: var(--green-accent);
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.detail-info h1 {
+    font-family: 'Teko', sans-serif;
+    font-size: 3rem;
+    line-height: 1.1;
+    margin: 0.5rem 0;
+}
+
+.detail-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.detail-desc {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 2rem;
+}
+
+.detail-specs ul {
+    list-style: none;
+    color: #aaa;
+}
+
+.detail-specs ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Mobiel Detail */
 @media (max-width: 768px) {
     .nav-wrapper {
         flex-direction: column;
@@ -779,7 +856,7 @@ footer {
         font-size: 2.5rem;
     }
 
-    .contact-grid, .shop-layout {
+    .contact-grid, .shop-layout, .detail-container {
         flex-direction: column; 
     }
     
@@ -790,5 +867,155 @@ footer {
     .cart-table th, .cart-table td {
         padding: 0.5rem;
         font-size: 0.9rem;
+    }
+}
+/* =========================================
+   13. KENNISBANK / CARE SHEET (NIEUW)
+   ========================================= */
+
+.care-header {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* Zorg voor baardagaam.jpg in je img map */
+    background: 
+        linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(15, 17, 21, 1) 100%),
+        url('../img/baardagaam.jpg');
+    background-size: cover;      
+    background-position: center; 
+    background-repeat: no-repeat;
+    margin-bottom: 3rem;
+}
+
+.care-header .subtitle {
+    display: block;
+    color: var(--green-accent);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.care-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Links breed, rechts smal */
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+/* De tekst kant */
+.care-content h2, .care-content h3 {
+    font-family: 'Teko', sans-serif;
+    color: #fff;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.care-content p {
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+.care-content ul {
+    background: var(--dark-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--green-accent);
+    margin-bottom: 2rem;
+    list-style: none;
+}
+
+.care-content ul li {
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+/* Promo blokje midden in de tekst */
+.promo-box {
+    background: linear-gradient(45deg, var(--dark-bg), #1e2530);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #333;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.promo-box h4 {
+    font-family: 'Teko', sans-serif;
+    font-size: 1.8rem;
+    color: var(--green-accent);
+    margin-bottom: 0.5rem;
+}
+
+/* De Paspoort kaart (Sidebar) */
+.care-sidebar {
+    position: sticky;
+    top: 100px; /* Blijft plakken als je scrollt! */
+    height: fit-content;
+}
+
+.passport-card {
+    background: var(--card-bg);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.passport-card h3 {
+    font-family: 'Teko', sans-serif;
+    font-size: 1.8rem;
+    color: #fff;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.passport-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 2px solid #333;
+}
+
+.passport-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid #2a2e35;
+    padding-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.passport-row:last-child {
+    border-bottom: none;
+}
+
+.passport-row .label {
+    color: var(--text-muted);
+    font-weight: bold;
+}
+
+.passport-row .value {
+    color: #fff;
+    text-align: right;
+}
+
+.stars {
+    color: gold;
+}
+
+/* Mobiel */
+@media (max-width: 768px) {
+    .care-grid {
+        grid-template-columns: 1fr;
+    }
+    .care-sidebar {
+        order: -1; /* Zet paspoort bovenaan op mobiel */
+        position: static;
+        margin-bottom: 2rem;
     }
 }
