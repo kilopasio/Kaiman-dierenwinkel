@@ -19,7 +19,7 @@
                 <li><a href="index.php" class="active">Home</a></li>
                 <li><a href="reptielen.php">Reptielen</a></li>
                 <li><a href="aquarium.php">Aquarium</a></li>
-                <li><a href="#">Webshop</a></li>
+                <li><a href="webshop.php">Webshop</a></li>
                 <li><a href="contact.php" class="btn-contact">Contact</a></li>
             </ul>
         </div>
@@ -74,7 +74,7 @@
             <div class="card-text">
                 <h3>Inrichting & Techniek</h3>
                 <p>Alles om de natuur na te bootsen. Kurk, lianen, stenen, verlichting en bodembedekking voor zowel natte als droge werelden.</p>
-                <a href="#">Naar de webshop &rarr;</a>
+                <a href="webshop.php">Naar de webshop &rarr;</a>
             </div>
         </div>
 

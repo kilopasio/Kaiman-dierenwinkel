@@ -21,6 +21,7 @@ body {
     --green-accent: #43a047; /* Jungle Groen */
     --blue-accent: #0288d1;  /* Oceaan Blauw */
     --dark-bg: #1a1d23;      /* Achtergrond voor blokken */
+    --card-bg: #22262e;      /* Iets lichter voor product kaarten */
     --text-muted: #b0b3b8;   /* Iets grijzere tekst */
 }
 
@@ -113,16 +114,14 @@ nav {
 }
 
 /* =========================================
-   4. HOME HERO SECTIE (De Homepagina Header)
+   4. HOME HERO SECTIE
    ========================================= */
 .hero {
     position: relative;
     height: 80vh;
-    /* Verwijst naar hero-main.jpg in de img map */
     background: 
         linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(15, 17, 21, 1) 100%),
         url('../img/kaiman.jpg');
-    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -168,6 +167,7 @@ nav {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     border: none;
     cursor: pointer;
+    display: inline-block;
 }
 
 .btn-main:hover {
@@ -271,8 +271,6 @@ nav {
 /* =========================================
    6. HEADER VARIANTEN (FADE EFFECT)
    ========================================= */
-
-/* Basis header instellingen */
 .header-content {
     width: 90%;
     max-width: 1200px;
@@ -316,7 +314,6 @@ nav {
     display: flex;
     align-items: center;
     position: relative;
-    /* Zorg voor 'winkel.jpg' in je img map */
     background: 
         linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(15, 17, 21, 1) 100%),
         url('../img/winkel.jpg');
@@ -326,8 +323,23 @@ nav {
     margin-bottom: 2rem;
 }
 
+/* SHOP HEADER */
+.fade-header-shop {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: 
+        linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(15, 17, 21, 1) 100%),
+        url('../img/shop.jpg');
+    background-size: cover;      
+    background-position: center; 
+    background-repeat: no-repeat;
+    margin-bottom: 2rem;
+}
+
 /* Typografie voor alle headers */
-.fade-header h1, .fade-header-aquarium h1, .fade-header-contact h1 {
+.fade-header h1, .fade-header-aquarium h1, .fade-header-contact h1, .fade-header-shop h1 {
     font-family: 'Teko', sans-serif;
     font-size: 4rem;
     text-transform: uppercase;
@@ -335,7 +347,7 @@ nav {
     margin-bottom: 0.5rem;
 }
 
-.fade-header p, .fade-header-aquarium p, .fade-header-contact p {
+.fade-header p, .fade-header-aquarium p, .fade-header-contact p, .fade-header-shop p {
     font-size: 1.2rem;
     color: #ccc;
 }
@@ -345,7 +357,7 @@ nav {
 
 
 /* =========================================
-   7. PAGINA INHOUD (DIEREN ROOSTER)
+   7. PAGINA INHOUD
    ========================================= */
 .intro-text {
     text-align: center;
@@ -393,7 +405,6 @@ nav {
     margin-bottom: 4rem;
 }
 
-/* Linker kolom: Informatie */
 .info-list {
     list-style: none;
     margin: 2rem 0;
@@ -440,14 +451,13 @@ nav {
 
 .closed { color: #e53935; }
 
-/* Rechter kolom: Visuals */
 .map-container {
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 2rem;
     border: 1px solid #333;
-    height: 400px; /* Expliciete hoogte voor de zekerheid */
-    background-color: #222; /* Kleurtje voor als hij laadt */
+    height: 400px; 
+    background-color: #222; 
 }
 
 .contact-form {
@@ -483,7 +493,223 @@ nav {
 }
 
 /* =========================================
-   9. FOOTER
+   9. WEBSHOP PAGINA
+   ========================================= */
+.shop-layout {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.shop-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.sidebar-block {
+    background: var(--dark-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #333;
+}
+
+.sidebar-block h3 {
+    font-family: 'Teko', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.sidebar-block ul {
+    list-style: none;
+}
+
+.sidebar-block ul li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-block ul li a {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Hier zorgen we dat de geselecteerde categorie groen wordt */
+.sidebar-block ul li a:hover,
+.sidebar-block ul li a.active-cat {
+    color: var(--green-accent);
+    font-weight: bold;
+}
+
+/* Range slider styling */
+.slider {
+    width: 100%;
+    accent-color: var(--green-accent);
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+/* Filter knop */
+.btn-filter {
+    background-color: var(--green-accent);
+    color: #fff;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.btn-filter:hover {
+    background-color: #fff;
+    color: var(--green-accent);
+}
+
+.product-grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-color: var(--green-accent);
+}
+
+.product-img {
+    height: 200px;
+    position: relative;
+    background-color: #fff;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sale-badge {
+    position: absolute;
+    top: 10px; left: 10px;
+    background-color: var(--blue-accent);
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.product-info {
+    padding: 1rem;
+}
+
+.product-info h4 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.product-info .category {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--green-accent);
+}
+
+.btn-add {
+    background-color: var(--green-accent);
+    color: #fff;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-add:hover {
+    background-color: #fff;
+    color: var(--green-accent);
+}
+
+/* =========================================
+   10. WINKELWAGEN TABEL
+   ========================================= */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--dark-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.cart-table th, .cart-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.cart-table th {
+    background-color: #000;
+    color: var(--green-accent);
+    text-transform: uppercase;
+    font-family: 'Teko', sans-serif;
+    font-size: 1.2rem;
+}
+
+.remove-link {
+    color: #e53935;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.cart-total {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: right;
+    border: 1px solid #333;
+}
+
+.cart-total span {
+    color: var(--green-accent);
+    font-size: 1.5rem;
+}
+
+/* =========================================
+   11. FOOTER
    ========================================= */
 footer {
     background-color: #050505;
@@ -526,7 +752,7 @@ footer {
 }
 
 /* =========================================
-   10. MOBIELE AANPASSINGEN (ALGEMEEN)
+   12. MOBIELE AANPASSINGEN
    ========================================= */
 @media (max-width: 768px) {
     .nav-wrapper {
@@ -549,12 +775,20 @@ footer {
         font-size: 0.85rem;
     }
 
-    .hero h1, .fade-header h1, .fade-header-aquarium h1, .fade-header-contact h1 {
+    .hero h1, .fade-header h1, .fade-header-aquarium h1, .fade-header-contact h1, .fade-header-shop h1 {
         font-size: 2.5rem;
     }
 
-    .contact-grid {
-        grid-template-columns: 1fr; /* Onder elkaar op mobiel */
-        gap: 2rem;
+    .contact-grid, .shop-layout {
+        flex-direction: column; 
+    }
+    
+    .shop-sidebar {
+        width: 100%;
+    }
+    
+    .cart-table th, .cart-table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
     }
 }

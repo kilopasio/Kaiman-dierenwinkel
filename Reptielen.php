@@ -19,7 +19,7 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="reptielen.php" class="active">Reptielen</a></li>
                 <li><a href="aquarium.php">Aquarium</a></li>
-                <li><a href="#">Webshop</a></li>
+                <li><a href="webshop.php">Webshop</a></li>
                 <li><a href="contact.php" class="btn-contact">Contact</a></li>
             </ul>
         </div>
