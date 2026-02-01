@@ -20,7 +20,7 @@
                 <li><a href="reptielen.php">Reptielen</a></li>
                 <li><a href="aquarium.php" class="active">Aquarium</a></li>
                 <li><a href="webshop.php">Webshop</a></li>
-                <li><a href="contact.php" class="btn-contact">Contact</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -39,14 +39,22 @@
         </div>
 
         <div class="animal-grid">
+            
             <div class="animal-card ocean-theme">
-                <h3>Tropische Vissen</h3>
-                <p>Tetra's, Goerami's, Cichliden en onze trots: Discusvissen.</p>
+                <h3>Cichliden & Tropisch</h3>
+                <p>Tetra's, Goerami's en een specialisatie in Afrikaanse Cichliden.</p>
+                <br>
+                <a href="care_sheet_cichliden.php" class="btn-main" 
+                   style="font-size: 0.8rem; padding: 5px 15px; background: var(--blue-accent); color: #ffffff !important;">
+                   Lees Cichliden Info &rarr;
+                </a>
             </div>
+
             <div class="animal-card ocean-theme">
                 <h3>Aquascaping</h3>
                 <p>Alles voor de planten: CO2 systemen, voedingsbodems en verlichting.</p>
             </div>
+
             <div class="animal-card ocean-theme">
                 <h3>Techniek</h3>
                 <p>Externe filters, pompen en verwarmingselementen van topmerken.</p>
@@ -59,14 +67,15 @@
             <div class="footer-block">
                 <h4>Openingstijden</h4>
                 <ul>
-                    <li>Maandag: 13:00 - 18:00</li>
-                    <li>Di - Vr: 10:00 - 18:00</li>
-                    <li>Zaterdag: 10:00 - 17:00</li>
+                    <li>Maandag: Gesloten</li>
+                    <li>Di - Vr: 09:30 - 18:00</li>
+                    <li>Zaterdag: 09:30 - 17:00</li>
+                    <li>Zondag: Gesloten</li>
                 </ul>
             </div>
             <div class="footer-block">
                 <h4>Locatie</h4>
-                <p>De Kaaiman<br>Nijmegen</p>
+                <p>De Kaaiman<br>Leeuwenhoekweg 6B<br>Bergschenhoek</p>
             </div>
         </div>
         <div class="copyright">
