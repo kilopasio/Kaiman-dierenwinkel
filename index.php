@@ -11,19 +11,21 @@
 
     <nav>
         <div class="container nav-wrapper">
-            <div class="logo">De Kaaiman</div>
+            <a href="index.php" class="brand-container">
+                <img src="img/logo.png" alt="Logo De Kaaiman" class="nav-logo">
+                <div class="logo-text">De Kaaiman</div>
+            </a>
             <ul class="menu">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Reptielen</a></li>
-                <li><a href="#">Aquarium</a></li>
+                <li><a href="index.php" class="active">Home</a></li>
+                <li><a href="reptielen.php">Reptielen</a></li>
+                <li><a href="aquarium.php">Aquarium</a></li>
                 <li><a href="#">Webshop</a></li>
-                <li><a href="#" class="btn-contact">Contact</a></li>
+                <li><a href="contact.php" class="btn-contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>De Wereld van <br> <span class="gradient-text">Water & Land</span></h1>
             <p>Dé speciaalzaak in Nijmegen voor tropische vissen, hagedissen, slangen en complete inrichting.</p>
@@ -42,31 +44,31 @@
         
         <div class="card jungle-theme">
             <div class="card-img">
-                <img src="images/reptiel.jpg" alt="Hagedis en Reptielen">
+                <img src="img/reptiel.jpg" alt="Hagedis en Reptielen">
                 <div class="badge green">Terrarium</div>
             </div>
             <div class="card-text">
                 <h3>Reptielen & Amfibieën</h3>
                 <p>Van baardagamen en gekko's tot slangen en kikkers. Wij hebben een ruim aanbod gezonde dieren en specialistische voeding.</p>
-                <a href="#">Bekijk reptielen &rarr;</a>
+                <a href="reptielen.php">Bekijk reptielen &rarr;</a>
             </div>
         </div>
 
         <div class="card ocean-theme">
             <div class="card-img">
-                <img src="images/vis.jpg" alt="Tropische vissen">
+                <img src="img/vis.jpg" alt="Tropische vissen">
                 <div class="badge blue">Aquarium</div>
             </div>
             <div class="card-text">
                 <h3>Vissen & Aquaria</h3>
                 <p>Ontdek onze wand vol tropische vissen. Ook voor aquascaping, pompen, filters en waterplanten ben je bij ons aan het juiste adres.</p>
-                <a href="#">Bekijk vissen &rarr;</a>
+                <a href="aquarium.php">Bekijk vissen &rarr;</a>
             </div>
         </div>
 
         <div class="card">
             <div class="card-img">
-                <img src="images/supplies.jpg" alt="Inrichting en Voer">
+                <img src="img/terrarium.jpg" alt="Inrichting en Voer">
                 <div class="badge gray">Shop</div>
             </div>
             <div class="card-text">
@@ -90,13 +92,11 @@
             </div>
             <div class="footer-block">
                 <h4>Locatie</h4>
-                <p>Kom langs in onze winkel voor advies op maat.</p>
-                <br>
-                <p><strong>De Kaaiman</strong><br>Nijmegen</p>
+                <p>De Kaaiman<br>Nijmegen</p>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; <?php echo date("Y"); ?> De Kaaiman - Specialist in Reptielen & Vissen.</p>
+            <p>&copy; <?php echo date("Y"); ?> De Kaaiman.</p>
         </div>
     </footer>
 
